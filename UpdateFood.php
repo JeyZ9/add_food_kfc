@@ -18,7 +18,7 @@
 <body>
     <div class="">
         <h1>Create Food</h1>
-        <form action="AddFood.php" method="POST">
+        <form action="UpdateFood.php" method="POST">
             <div class="">
                 <label for="foodID">ID</label>
                 <input type="text" placeholder="foodID" name="foodID" id="foodID" />
@@ -71,7 +71,7 @@ try{
         }
 
         $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "insert into tbl_food values(:foodID, :foodName, :foodDescription, :foodPrice, :MenuID)";
+        $sql = "UPDATE tbl_food SET foodName = :foodName, foodDescription = :foodDescription, foodPrice = :foodPrice, MenuID = :MenuID WHERE foodID = :foodID";
         $stmt = $conn -> prepare($sql);
         $stmt -> bindParam(':foodID', $_POST['foodID']);
         $stmt -> bindParam(':foodName', $_POST['foodName']);
